@@ -1,0 +1,52 @@
+{
+  "name": "@taskio/cli",
+  "version": "0.0.1",
+  "description": "NodeJs Client for taskio server",
+  "main": "./dist/index.js",
+  "scripts": {
+    "lint": "standard",
+    "test": "NODE_ENV=test ava -v -s",
+    "build": "babel src --out-dir dist",
+    "dev:test": "NODE_ENV=test npm run build && npm run test -- -w",
+    "cover": "nyc npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pimex/taskio-cli.git"
+  },
+  "keywords": [
+    "task"
+  ],
+  "author": "jquiceno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pimex/taskio/issues"
+  },
+  "homepage": "https://github.com/Pimex/taskio#readme",
+  "ava": {
+    "require": [
+      "@babel/register"
+    ]
+  },
+  "devDependencies": {
+    "@babel/register": "^7.0.0",
+    "ava": "^1.2.1",
+    "delay": "^4.1.0",
+    "nyc": "^13.2.0",
+    "standard": "^12.0.1",
+    "uuid": "^3.3.2"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "boom": "^7.3.0",
+    "getfig": "0.0.3",
+    "good": "^8.1.2",
+    "good-console": "^8.0.0",
+    "hapi": "^18.1.0",
+    "moment": "^2.24.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
