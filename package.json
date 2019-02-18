@@ -1,5 +1,5 @@
 {
-  "name": "@taskio/cli",
+  "name": "taskio-cli",
   "version": "0.0.1",
   "description": "NodeJs Client for taskio server",
   "main": "./dist/index.js",
