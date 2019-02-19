@@ -1,6 +1,6 @@
 {
   "name": "taskio-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NodeJs Client for taskio server",
   "main": "./dist/index.js",
   "scripts": {
