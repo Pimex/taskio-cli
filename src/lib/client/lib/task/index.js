@@ -52,12 +52,13 @@ module.exports = (self) => {
       }
     },
 
-    async getAll () {
+    async getAll (query = {}) {
       try {
         const res = await request({
           uri: `${baseUrl}`,
           method: 'GET',
-          json: true
+          json: true,
+          qs: query
         })
 
         return this.response(res)

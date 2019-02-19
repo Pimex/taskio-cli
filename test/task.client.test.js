@@ -26,6 +26,24 @@ test.afterEach(async t => {
   }
 })
 
+test('Get all tasks by query', async t => {
+  const taskData = t.context.taskData
+  const owner = `${uuid.v4()}@gmail.com`
+  taskData.owner = owner
+
+  const newTask = await cli.task.add(taskData)
+  const tasks = await cli.task.getAll({
+    owner
+  })
+
+  t.context.task = newTask
+
+  t.is(newTask.statusCode, 201)
+  t.is(tasks.statusCode, 200)
+  t.is(tasks.data.length > 0, true)
+  t.is(tasks.data.filter(i => i.owner === newTask.data.owner).length > 0, true)
+})
+
 test('add Task', async t => {
   const taskData = t.context.taskData
 
