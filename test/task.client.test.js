@@ -26,6 +26,21 @@ test.afterEach(async t => {
   }
 })
 
+test('Get task by id', async t => {
+  const taskData = t.context.taskData
+
+  const newTask = await cli.task.add(taskData)
+  const newTaskData = await cli.task.get(newTask.data.id)
+
+  t.context.task = newTask
+
+  t.is(newTask.statusCode, 201)
+  t.is(newTaskData.statusCode, 200)
+  t.deepEqual(newTask.data.title, taskData.title)
+  t.deepEqual(newTask.data.id, newTaskData.data.id)
+  t.is(typeof newTask.data.id, 'string')
+})
+
 test('Get all tasks by query', async t => {
   const taskData = t.context.taskData
   const owner = `${uuid.v4()}@gmail.com`

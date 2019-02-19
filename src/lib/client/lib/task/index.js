@@ -41,7 +41,7 @@ module.exports = (self) => {
     async get (id) {
       try {
         const res = await request({
-          uri: `${baseUrl}/${this.id}`,
+          uri: `${baseUrl}/${id}`,
           method: 'GET',
           json: true
         })
