@@ -48,15 +48,11 @@ module.exports = {
             times: 1
           },
           exect_date: Moment().add(1, 'days').unix(),
-          req: {
-            webhook: {
-              uri: `${whServer.uri}/test`,
-              method: 'POST',
-              body: {
-                title: 'Test task webhook title',
-                description: 'Add new task in your list'
-              }
-            }
+          uri: `${whServer.uri}/test`,
+          method: 'POST',
+          data: {
+            title: 'Test task webhook title',
+            description: 'Add new task in your list'
           }
         }
       }
