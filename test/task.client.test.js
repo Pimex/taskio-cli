@@ -11,7 +11,7 @@ let cli = null
 test.before(async t => {
   const whkServer = await fixtures.webhook.server()
 
-  cli = new Client('http://localhost:3000', {
+  cli = new Client({
     response: 'all'
   })
 

@@ -1,0 +1,8 @@
+{
+  "taskio": {
+    "server": {
+      "url": "[Taskio server url]",
+      "uri": "[alias from taskio.server.url]"
+    }
+  }
+}
