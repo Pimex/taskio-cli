@@ -67,12 +67,13 @@ module.exports = (self) => {
       }
     },
 
-    async delete (id) {
+    async delete (id, params = false) {
       try {
         const res = await request({
           uri: `${baseUrl}/${id}`,
           method: 'DELETE',
-          json: true
+          json: true,
+          body: params
         })
 
         return this.response(res)

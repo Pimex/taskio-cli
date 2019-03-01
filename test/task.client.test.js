@@ -26,6 +26,46 @@ test.afterEach(async t => {
   }
 })
 
+test('Remove user task', async t => {
+  const taskData = t.context.taskData
+  const users = [`${uuid.v4()}@test.com`, `${uuid.v4()}@test.com`]
+  taskData.users = users
+
+  const newTask = await cli.task.add(taskData)
+  const taskId = newTask.data.id
+
+  t.context.task = newTask
+  t.deepEqual(newTask.data.users, users)
+  t.deepEqual(newTask.statusCode, 201)
+  t.deepEqual(t.context.taskData.owner, newTask.data.owner)
+  t.deepEqual(newTask.data.state, 'active')
+  t.truthy(newTask.data._id, true)
+
+  const updateData = await cli.task.delete(taskId, {
+    users: users[0]
+  })
+
+  const newTaskData = await cli.task.get(taskId)
+
+  t.is(newTaskData.data.users.indexOf(users[0]) < 0, true)
+  t.deepEqual(updateData.statusCode, 200)
+})
+
+test('Add task users', async t => {
+  const taskData = t.context.taskData
+  const users = [`${uuid.v4()}@test.com`, `${uuid.v4()}@test.com`]
+  taskData.users = users
+
+  const newTask = await cli.task.add(taskData)
+
+  t.context.task = newTask
+  t.deepEqual(newTask.statusCode, 201)
+  t.deepEqual(t.context.taskData.owner, newTask.data.owner)
+  t.deepEqual(newTask.data.state, 'active')
+  t.deepEqual(newTask.data.users, users)
+  t.truthy(newTask.data._id, true)
+})
+
 test('Get task by id', async t => {
   const taskData = t.context.taskData
 
