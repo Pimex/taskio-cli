@@ -4,6 +4,7 @@
   "description": "NodeJs Client for taskio server",
   "main": "./dist/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "lint": "standard",
     "test": "NODE_ENV=test ava -v -s",
     "build": "babel src --out-dir dist",
